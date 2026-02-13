@@ -15,13 +15,13 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Menino do Trem | Desenvolvedor Back-end & Front-end",
+  title: "Davi Fraga | Desenvolvedor Back-end & Front-end",
   description:
-    "Portifólio de desenvolvedor back-end (Java & Python) e front-end (HTML/CSS). Aberto a estágio, primeira oportunidade e freelas.",
+    "Portfolio de Davi Fraga — desenvolvedor back-end (Java & Python) e front-end (HTML/CSS). Aberto a estagio, primeira oportunidade e freelas.",
   openGraph: {
-    title: "Menino do Trem | Desenvolvedor Back-end & Front-end",
+    title: "Davi Fraga | Desenvolvedor Back-end & Front-end",
     description:
-      "Portifólio de desenvolvedor back-end (Java & Python) e front-end (HTML/CSS).",
+      "Portfolio de Davi Fraga — desenvolvedor back-end (Java & Python) e front-end (HTML/CSS).",
     type: "website",
   },
 };

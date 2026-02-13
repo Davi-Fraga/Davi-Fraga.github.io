@@ -20,6 +20,7 @@ export function ProjectsSection() {
               <ProjectCard
                 title={project.title}
                 description={project.description}
+                briefExplanation={project.briefExplanation}
                 highlights={project.highlights}
                 techBadges={project.techBadges}
                 demoUrl={project.demoUrl}

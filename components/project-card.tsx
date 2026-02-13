@@ -1,6 +1,6 @@
 "use client";
 
-import { ExternalLink, Github, Sparkles } from "lucide-react";
+import { ExternalLink, Github, Sparkles, ChevronRight } from "lucide-react";
 import {
   Card,
   CardHeader,
@@ -15,7 +15,8 @@ import { Button } from "@/components/ui/button";
 interface ProjectCardProps {
   title: string;
   description: string;
-  highlights: string;
+  briefExplanation: string;
+  highlights: readonly string[];
   techBadges: readonly string[];
   demoUrl: string;
   repoUrl: string;
@@ -24,6 +25,7 @@ interface ProjectCardProps {
 export function ProjectCard({
   title,
   description,
+  briefExplanation,
   highlights,
   techBadges,
   demoUrl,
@@ -33,15 +35,31 @@ export function ProjectCard({
     <Card className="group flex h-full flex-col transition-colors hover:border-primary/30">
       <CardHeader>
         <CardTitle className="text-lg leading-snug">{title}</CardTitle>
-        <CardDescription className="mt-1 text-sm leading-relaxed">{description}</CardDescription>
+        <CardDescription className="mt-1 text-sm leading-relaxed">
+          {description}
+        </CardDescription>
       </CardHeader>
 
       <CardContent className="flex-1 space-y-4">
-        <div className="flex items-start gap-2 text-sm text-muted-foreground">
-          <Sparkles className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-          <span>{highlights}</span>
-        </div>
+        {/* Brief explanation */}
+        <p className="text-sm leading-relaxed text-muted-foreground">
+          {briefExplanation}
+        </p>
 
+        {/* Highlights as bullet list */}
+        <ul className="space-y-1.5" aria-label={`Destaques de ${title}`}>
+          {highlights.map((item) => (
+            <li
+              key={item}
+              className="flex items-start gap-2 text-sm text-muted-foreground"
+            >
+              <ChevronRight className="mt-0.5 h-3.5 w-3.5 shrink-0 text-primary" />
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+
+        {/* Tech badges */}
         <div className="flex flex-wrap gap-1.5">
           {techBadges.map((tech) => (
             <Badge key={tech} variant="outline" className="text-xs">

@@ -1,19 +1,19 @@
 export const profile = {
-  name: "Menino do Trem",
+  name: "Davi Fraga",
   headline: "Desenvolvedor Back-end (Java & Python) | Front-end (HTML/CSS)",
   subheadline:
-    "Construo aplicações e automações com foco em clareza, performance e boa arquitetura. Aberto a estágio/primeira oportunidade e freelas.",
+    "Construo aplicacoes e automacoes com foco em clareza, performance e boa arquitetura. Aberto a estagio/primeira oportunidade e freelas.",
   cvPath: "/cv.pdf",
 
   about: {
     paragraphs: [
-      "Estudo Engenharia de Software e desenvolvo projetos práticos desde o início da graduação. Meu foco é back-end com Java e Python — gosto de resolver problemas reais com código limpo e bem estruturado, criando automações e sistemas que funcionam de verdade.",
-      "Também estou evoluindo no front-end (HTML/CSS) para conseguir entregar produtos completos. Acredito que um desenvolvedor versátil entrega mais valor, e é isso que busco a cada projeto.",
+      "Estudo Engenharia de Software e desenvolvo projetos praticos desde o inicio da graduacao. Meu foco e back-end com Java e Python \u2014 gosto de resolver problemas reais com codigo limpo e bem estruturado, criando automacoes e sistemas que funcionam de verdade.",
+      "Tambem estou evoluindo no front-end (HTML/CSS) para conseguir entregar produtos completos. Acredito que um desenvolvedor versatil entrega mais valor, e e isso que busco a cada projeto.",
     ],
     highlights: [
       { label: "Back-end", value: "Java e Python" },
       { label: "Front-end", value: "HTML/CSS" },
-      { label: "Rotina", value: "Git + VSCode/IntelliJ + Cursor AI" },
+      { label: "Ferramentas", value: "Git + VSCode/IntelliJ + Cursor AI" },
     ],
   },
 
@@ -36,36 +36,59 @@ export const profile = {
     {
       title: "SaaS de Atendimento Omnichannel (Front-end)",
       description:
-        "Dashboard e telas para atendimento/gestão com foco em UX e organização.",
-      highlights:
-        "Layout consistente, componentes reutilizáveis, visão de métricas.",
+        "Dashboard e telas para atendimento/gestao com foco em UX e organizacao.",
+      briefExplanation:
+        "Painel desenvolvido para centralizar a operacao de atendimento ao cliente \u2014 reunindo visao geral, listas de chamados, status em tempo real e metricas de desempenho. A interface foi construida com componentes reutilizaveis e uma estrutura de UI consistente para facilitar a manutencao e escalabilidade do projeto.",
+      highlights: [
+        "Layout consistente e responsivo",
+        "Componentes reutilizaveis com shadcn/ui",
+        "Visao de metricas e dashboards",
+      ],
       techBadges: ["Next.js", "Tailwind", "shadcn/ui"],
       demoUrl: "#",
       repoUrl: "#",
     },
     {
-      title: "Automação de Mensagens com n8n",
-      description:
-        "Fluxos para automação e integrações (ex.: webhooks e rotinas de atendimento).",
-      highlights: "Workflows, integrações, validação de entradas, logs.",
-      techBadges: ["n8n", "Webhooks", "APIs"],
-      demoUrl: "#",
-      repoUrl: "#",
-    },
-    {
       title: "GynLog Fleet Manager (Java Desktop)",
-      description: "Sistema desktop para gestão de frotas no padrão MVC.",
-      highlights: "CRUD, organização em camadas, regras de negócio.",
+      description: "Sistema desktop para gestao de frotas no padrao MVC.",
+      briefExplanation:
+        "Aplicacao desktop que gerencia veiculos e rotinas operacionais de frotas \u2014 incluindo cadastros, consultas e regras de negocio. Organizado em camadas seguindo o padrao MVC, com foco em clareza de dominio e facilidade de manutencao do codigo.",
+      highlights: [
+        "CRUD completo de veiculos e rotinas",
+        "Arquitetura MVC bem definida",
+        "Regras de negocio encapsuladas",
+      ],
       techBadges: ["Java", "Swing", "MVC"],
       demoUrl: "#",
       repoUrl: "#",
     },
     {
-      title: "Sistema/Organização de Loja (Alma da Prata)",
+      title: "Sistema/Organizacao de Loja (Alma da Prata)",
       description:
-        "Controle e organização de itens/rotinas do negócio (protótipo/gestão).",
-      highlights: "Cadastros, visão geral, operação simples.",
+        "Controle e organizacao de itens/rotinas do negocio (prototipo/gestao).",
+      briefExplanation:
+        "Sistema pensado para centralizar cadastros e oferecer visao geral da operacao de uma loja \u2014 gerenciando itens, rotinas e organizacao interna. O objetivo e reduzir a desorganizacao do dia a dia e melhorar o controle do negocio de forma simples e acessivel.",
+      highlights: [
+        "Cadastros de itens e categorias",
+        "Visao geral da operacao",
+        "Operacao simples e intuitiva",
+      ],
       techBadges: ["Java/Python", "HTML/CSS", "Git"],
+      demoUrl: "#",
+      repoUrl: "#",
+    },
+    {
+      title: "API de Gestao (Back-end) \u2014 Java ou Python",
+      description:
+        "API REST para cadastro e consulta de dados com validacoes.",
+      briefExplanation:
+        "Base de back-end para operacoes CRUD (ex.: clientes, produtos), com endpoints REST bem definidos, validacao de dados de entrada e organizacao por camadas. Projetada para ser extensivel e servir como ponto de partida para sistemas maiores.",
+      highlights: [
+        "Endpoints REST padronizados",
+        "Validacao de dados de entrada",
+        "Estrutura em camadas (controller/service/repository)",
+      ],
+      techBadges: ["Java", "Python", "Git"],
       demoUrl: "#",
       repoUrl: "#",
     },
@@ -74,28 +97,28 @@ export const profile = {
   timeline: {
     education: [
       {
-        title: "Engenharia de Software — 3º período (em andamento)",
+        title: "Engenharia de Software \u2014 3\u00BA periodo (em andamento)",
         institution: "Universidade",
-        period: "2024 — atual",
+        period: "2024 \u2014 atual",
       },
       {
-        title: "Operador de Suporte em Tecnologia da Informação",
+        title: "Operador de Suporte em Tecnologia da Informacao",
         institution: "SENAI",
-        period: "2023 — 2024",
+        period: "2023 \u2014 2024",
       },
     ],
     experience: [
       {
-        title: "Projetos próprios e acadêmicos",
-        institution: "Portifólio pessoal",
-        period: "2024 — atual",
+        title: "Projetos proprios e academicos",
+        institution: "Portfolio pessoal",
+        period: "2024 \u2014 atual",
       },
     ],
   },
 
   contact: {
     message:
-      "Quer conversar sobre vaga, estágio ou um freela? Me chama.",
+      "Quer conversar sobre vaga, estagio ou um freela? Me chama.",
     email: "seuemail@email.com",
     github: "https://github.com/seuusuario",
     linkedin: "https://linkedin.com/in/seuusuario",
