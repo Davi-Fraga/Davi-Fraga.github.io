@@ -119,10 +119,12 @@ export const profile = {
   contact: {
     message:
       "Quer conversar sobre vaga, estagio ou um freela? Me chama.",
-    email: "seuemail@email.com",
-    github: "https://github.com/seuusuario",
-    linkedin: "https://linkedin.com/in/seuusuario",
-    whatsapp: "https://wa.me/5500000000000",
+    social: {
+      github: "https://github.com/Davi-Fraga",
+      linkedin: "https://www.linkedin.com/in/davi-kerdole-fraga-4a0b38351/",
+      whatsapp: "https://wa.me/5562999699827",
+      instagram: null,
+    },
   },
 
   footer: {

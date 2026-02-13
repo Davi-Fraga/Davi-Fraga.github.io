@@ -2,9 +2,9 @@ import { Github, Linkedin, Phone, Terminal } from "lucide-react";
 import { profile } from "@/data/profile";
 
 const socialLinks = [
-  { label: "GitHub", icon: Github, href: profile.contact.github },
-  { label: "LinkedIn", icon: Linkedin, href: profile.contact.linkedin },
-  { label: "WhatsApp", icon: Phone, href: profile.contact.whatsapp },
+  { label: "GitHub", icon: Github, href: profile.contact.social.github },
+  { label: "LinkedIn", icon: Linkedin, href: profile.contact.social.linkedin },
+  { label: "WhatsApp", icon: Phone, href: profile.contact.social.whatsapp },
 ];
 
 export function Footer() {
@@ -24,7 +24,7 @@ export function Footer() {
           {socialLinks.map((link) => (
             <a
               key={link.label}
-              href={link.href}
+              href={link.href!}
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground transition-colors hover:text-primary"
