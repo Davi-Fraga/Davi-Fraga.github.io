@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowDown, MessageSquare, Download } from "lucide-react";
+import { ArrowDown, MessageSquare } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { FadeIn } from "@/components/motion-wrapper";
 import { profile } from "@/data/profile";
@@ -18,12 +18,6 @@ export function Hero() {
       <div className="pointer-events-none absolute left-1/2 top-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/5 blur-3xl" />
 
       <div className="relative z-10 mx-auto max-w-4xl px-4 text-center md:px-6">
-        <FadeIn delay={0.1}>
-          <p className="mb-4 inline-block rounded-full border border-border bg-secondary px-4 py-1.5 text-xs font-medium uppercase tracking-wider text-muted-foreground">
-            Disponivel para oportunidades
-          </p>
-        </FadeIn>
-
         <FadeIn delay={0.2}>
           <h1 className="text-4xl font-bold leading-tight tracking-tight text-foreground sm:text-5xl md:text-6xl text-balance">
             {profile.name}
@@ -61,21 +55,7 @@ export function Hero() {
                 Falar comigo
               </a>
             </Button>
-            <Button
-              asChild
-              variant="ghost"
-              size="lg"
-              className="w-full sm:w-auto text-muted-foreground"
-            >
-              <a
-                href={profile.cvPath}
-                download
-                title="Adicione seu CV em public/cv.pdf"
-              >
-                <Download className="h-4 w-4" />
-                Baixar CV
-              </a>
-            </Button>
+
           </div>
         </FadeIn>
       </div>

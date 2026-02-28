@@ -8,12 +8,12 @@ import { cn } from "@/lib/utils";
 import { profile } from "@/data/profile";
 
 const navLinks = [
-  { label: "Inicio", href: "#inicio" },
-  { label: "Sobre", href: "#sobre" },
-  { label: "Habilidades", href: "#habilidades" },
-  { label: "Projetos", href: "#projetos" },
-  { label: "Experiencia", href: "#experiencia" },
-  { label: "Contato", href: "#contato" },
+  { label: "Home", href: "#inicio" },
+  { label: "About", href: "#sobre" },
+  { label: "Skills", href: "#habilidades" },
+  { label: "Projects", href: "#projetos" },
+  { label: "Experience", href: "#experiencia" },
+  { label: "Contact", href: "#contato" },
 ];
 
 export function Navbar() {

@@ -1,13 +1,12 @@
 export const profile = {
   name: "Davi Fraga",
-  headline: "Desenvolvedor Back-end (Java & Python) | Front-end (HTML/CSS)",
+  headline: "Back-end Developer (Java & Python) | Front-end (HTML/CSS)",
   subheadline:
     "Construo aplicacoes e automacoes com foco em clareza, performance e boa arquitetura. Aberto a estagio/primeira oportunidade e freelas.",
-  cvPath: "/cv.pdf",
 
   about: {
     paragraphs: [
-      "Estudo Engenharia de Software e desenvolvo projetos praticos desde o inicio da graduacao. Meu foco e back-end com Java e Python \u2014 gosto de resolver problemas reais com codigo limpo e bem estruturado, criando automacoes e sistemas que funcionam de verdade.",
+      "Cursando Engenharia de Software na Faculdade SENAI FATESG (3\u00BA periodo). Meu foco e back-end com Java e Python \u2014 gosto de resolver problemas reais com codigo limpo e bem estruturado, criando automacoes e sistemas que funcionam de verdade.",
       "Tambem estou evoluindo no front-end (HTML/CSS) para conseguir entregar produtos completos. Acredito que um desenvolvedor versatil entrega mais valor, e e isso que busco a cada projeto.",
     ],
     highlights: [
@@ -98,7 +97,7 @@ export const profile = {
     education: [
       {
         title: "Engenharia de Software \u2014 3\u00BA periodo (em andamento)",
-        institution: "Universidade",
+        institution: "Faculdade SENAI FATESG",
         period: "2024 \u2014 atual",
       },
       {
@@ -119,6 +118,9 @@ export const profile = {
   contact: {
     message:
       "Quer conversar sobre vaga, estagio ou um freela? Me chama.",
+    cardTitle: "Bora tirar sua ideia do papel",
+    cardText:
+      "Posso ajudar a construir APIs, automacoes e interfaces diretas ao ponto. Se voce tem uma vaga, freela ou um projeto em mente, me chama e eu te respondo rapido.",
     social: {
       github: "https://github.com/Davi-Fraga",
       linkedin: "https://www.linkedin.com/in/davi-kerdole-fraga-4a0b38351/",
@@ -128,7 +130,7 @@ export const profile = {
   },
 
   footer: {
-    text: "Feito com Next.js + Tailwind.",
+    text: "Feito com Next.js + Tailwind. \u00A9 2026 Davi Fraga",
   },
 } as const;
 

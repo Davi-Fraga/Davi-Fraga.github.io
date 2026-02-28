@@ -49,12 +49,10 @@ export function ContactSection() {
             <div className="flex h-full flex-col justify-between rounded-xl border border-border bg-card p-6 md:p-8">
               <div>
                 <h3 className="text-xl font-bold text-foreground md:text-2xl">
-                  Vamos Trabalhar Juntos
+                  {profile.contact.cardTitle}
                 </h3>
                 <p className="mt-3 text-sm leading-relaxed text-muted-foreground md:text-base">
-                  Estou sempre aberto a novos projetos e oportunidades de
-                  colaboracao. Minha prioridade e criar solucoes que realmente
-                  fazem a diferenca.
+                  {profile.contact.cardText}
                 </p>
 
                 {/* WhatsApp info block */}
