@@ -17,16 +17,16 @@ export function SkillsGrid() {
     <section
       id="habilidades"
       className="py-20 md:py-28"
-      aria-label="Habilidades"
+      aria-label={profile.skills.sectionTitle}
     >
       <div className="mx-auto max-w-4xl px-4 md:px-6">
         <SectionTitle
-          title="Habilidades"
-          subtitle="Tecnologias e ferramentas que utilizo no dia a dia"
+          title={profile.skills.sectionTitle}
+          subtitle={profile.skills.sectionSubtitle}
         />
 
         <StaggerContainer className="grid gap-6 sm:grid-cols-3">
-          {profile.skills.map((cat) => {
+          {profile.skills.categories.map((cat) => {
             const Icon = categoryIcons[cat.category] ?? Settings;
             return (
               <StaggerItem key={cat.category}>

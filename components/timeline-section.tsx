@@ -40,12 +40,12 @@ export function TimelineSection() {
     <section
       id="experiencia"
       className="py-20 md:py-28"
-      aria-label="Experiencia e formacao"
+      aria-label={profile.timeline.sectionTitle}
     >
       <div className="mx-auto max-w-4xl px-4 md:px-6">
         <SectionTitle
-          title="Experiencia & Formacao"
-          subtitle="Minha trajetoria academica e profissional"
+          title={profile.timeline.sectionTitle}
+          subtitle={profile.timeline.sectionSubtitle}
         />
 
         <div className="grid gap-12 md:grid-cols-2">
@@ -54,7 +54,7 @@ export function TimelineSection() {
             <div>
               <div className="mb-6 flex items-center gap-2 text-foreground">
                 <GraduationCap className="h-5 w-5 text-primary" />
-                <h3 className="text-lg font-semibold">Formacao</h3>
+                <h3 className="text-lg font-semibold">{profile.timeline.educationLabel}</h3>
               </div>
               <StaggerContainer>
                 {profile.timeline.education.map((item) => (
@@ -74,7 +74,7 @@ export function TimelineSection() {
             <div>
               <div className="mb-6 flex items-center gap-2 text-foreground">
                 <Briefcase className="h-5 w-5 text-primary" />
-                <h3 className="text-lg font-semibold">Experiencia</h3>
+                <h3 className="text-lg font-semibold">{profile.timeline.experienceLabel}</h3>
               </div>
               <StaggerContainer>
                 {profile.timeline.experience.map((item) => (

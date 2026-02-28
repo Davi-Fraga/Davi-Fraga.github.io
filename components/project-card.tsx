@@ -86,7 +86,7 @@ export function ProjectCard({
             href={repoUrl}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label={`Repositorio de ${title}`}
+            aria-label={`Repositório de ${title}`}
           >
             <Github className="h-3.5 w-3.5" />
             Repo

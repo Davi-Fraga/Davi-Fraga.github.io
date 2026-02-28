@@ -44,7 +44,7 @@ export function ContactSection() {
         </FadeIn>
 
         <div className="grid gap-6 md:grid-cols-2">
-          {/* LEFT CARD -- Vamos Trabalhar Juntos */}
+          {/* LEFT CARD */}
           <FadeIn direction="left">
             <div className="flex h-full flex-col justify-between rounded-xl border border-border bg-card p-6 md:p-8">
               <div>
@@ -62,10 +62,10 @@ export function ContactSection() {
                   </div>
                   <div>
                     <p className="text-sm font-semibold text-foreground">
-                      WhatsApp
+                      {profile.contact.whatsappLabel}
                     </p>
                     <p className="text-xs text-muted-foreground">
-                      Resposta rapida garantida
+                      {profile.contact.whatsappHint}
                     </p>
                   </div>
                 </div>
@@ -74,7 +74,7 @@ export function ContactSection() {
               {/* Social icons row */}
               <div className="mt-8">
                 <p className="mb-3 text-xs font-medium uppercase tracking-wider text-muted-foreground">
-                  Me siga nas redes sociais
+                  {profile.contact.socialLabel}
                 </p>
                 <TooltipProvider delayDuration={200}>
                   <div className="flex items-center gap-3">
@@ -135,20 +135,18 @@ export function ContactSection() {
             </div>
           </FadeIn>
 
-          {/* RIGHT CARD -- Contato Direto */}
+          {/* RIGHT CARD */}
           <FadeIn direction="right">
             <div className="flex h-full flex-col items-center justify-center rounded-xl border border-border bg-card p-6 text-center md:p-8">
-              {/* Large paper-plane icon */}
               <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/10">
                 <Send className="h-8 w-8 text-primary" />
               </div>
 
               <h3 className="text-xl font-bold text-foreground md:text-2xl">
-                Contato Direto
+                {profile.contact.rightCardTitle}
               </h3>
               <p className="mt-3 max-w-xs text-sm leading-relaxed text-muted-foreground md:text-base">
-                Clique no botao abaixo para iniciar uma conversa no WhatsApp e
-                discutir seu projeto.
+                {profile.contact.rightCardText}
               </p>
 
               <Button
@@ -160,10 +158,10 @@ export function ContactSection() {
                   href={profile.contact.social.whatsapp!}
                   target="_blank"
                   rel="noreferrer"
-                  aria-label="Iniciar conversa no WhatsApp"
+                  aria-label={profile.contact.rightCardCta}
                 >
                   <Phone className="h-4 w-4" />
-                  Iniciar Conversa no WhatsApp
+                  {profile.contact.rightCardCta}
                 </a>
               </Button>
             </div>

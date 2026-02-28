@@ -7,15 +7,15 @@ import { profile } from "@/data/profile";
 
 export function ProjectsSection() {
   return (
-    <section id="projetos" className="py-20 md:py-28" aria-label="Projetos">
+    <section id="projetos" className="py-20 md:py-28" aria-label={profile.projects.sectionTitle}>
       <div className="mx-auto max-w-6xl px-4 md:px-6">
         <SectionTitle
-          title="Projetos"
-          subtitle="Alguns dos projetos que desenvolvi recentemente"
+          title={profile.projects.sectionTitle}
+          subtitle={profile.projects.sectionSubtitle}
         />
 
         <StaggerContainer className="grid gap-6 sm:grid-cols-2">
-          {profile.projects.map((project) => (
+          {profile.projects.items.map((project) => (
             <StaggerItem key={project.title}>
               <ProjectCard
                 title={project.title}

@@ -30,13 +30,13 @@ export function Navbar() {
     >
       <nav
         className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 md:px-6"
-        aria-label="Navegacao principal"
+        aria-label="Navegação principal"
       >
         {/* Logo */}
         <a
           href="#inicio"
           className="flex items-center gap-2 text-lg font-bold text-foreground transition-colors hover:text-primary"
-          aria-label={`${profile.name} - Voltar ao inicio`}
+          aria-label={`${profile.name} - Voltar ao início`}
         >
           <Terminal className="h-5 w-5 text-primary" />
           <span className="hidden sm:inline">{profile.name}</span>

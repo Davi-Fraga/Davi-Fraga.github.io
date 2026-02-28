@@ -10,7 +10,7 @@ export function Hero() {
     <section
       id="inicio"
       className="relative flex min-h-[85vh] items-center justify-center overflow-hidden"
-      aria-label="Apresentacao"
+      aria-label="Apresentação"
     >
       {/* Subtle background grid */}
       <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border)/0.3)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border)/0.3)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
@@ -41,7 +41,7 @@ export function Hero() {
             <Button asChild size="lg" className="w-full sm:w-auto">
               <a href="#projetos">
                 <ArrowDown className="h-4 w-4" />
-                Ver projetos
+                {profile.hero.ctaProjects}
               </a>
             </Button>
             <Button
@@ -52,7 +52,7 @@ export function Hero() {
             >
               <a href="#contato">
                 <MessageSquare className="h-4 w-4" />
-                Falar comigo
+                {profile.hero.ctaContact}
               </a>
             </Button>
 

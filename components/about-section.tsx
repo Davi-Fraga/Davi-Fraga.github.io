@@ -9,9 +9,9 @@ const highlightIcons = [Code2, Monitor, Wrench];
 
 export function AboutSection() {
   return (
-    <section id="sobre" className="py-20 md:py-28" aria-label="Sobre mim">
+    <section id="sobre" className="py-20 md:py-28" aria-label={profile.about.sectionTitle}>
       <div className="mx-auto max-w-4xl px-4 md:px-6">
-        <SectionTitle title="Sobre mim" subtitle="Um pouco da minha historia e motivacao" />
+        <SectionTitle title={profile.about.sectionTitle} subtitle={profile.about.sectionSubtitle} />
 
         <FadeIn>
           <div className="space-y-4 text-base leading-relaxed text-muted-foreground md:text-lg">

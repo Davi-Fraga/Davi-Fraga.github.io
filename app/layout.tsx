@@ -17,11 +17,11 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "Davi Fraga | Desenvolvedor Back-end & Front-end",
   description:
-    "Portfolio de Davi Fraga — desenvolvedor back-end (Java & Python) e front-end (HTML/CSS). Aberto a estagio, primeira oportunidade e freelas.",
+    "Portfólio de Davi Fraga — desenvolvedor back-end (Java & Python) e front-end (HTML/CSS). Aberto a oportunidades e freelance.",
   openGraph: {
     title: "Davi Fraga | Desenvolvedor Back-end & Front-end",
     description:
-      "Portfolio de Davi Fraga — desenvolvedor back-end (Java & Python) e front-end (HTML/CSS).",
+      "Portfólio de Davi Fraga — desenvolvedor back-end (Java & Python) e front-end (HTML/CSS).",
     type: "website",
   },
 };
