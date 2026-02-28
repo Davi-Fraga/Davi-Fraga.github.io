@@ -23,8 +23,8 @@ export function ProjectsSection() {
                 briefExplanation={project.briefExplanation}
                 highlights={project.highlights}
                 techBadges={project.techBadges}
-                demoUrl={project.demoUrl}
-                repoUrl={project.repoUrl}
+                demoUrl={project.demoUrl ?? null}
+                repoUrl={project.repoUrl ?? null}
               />
             </StaggerItem>
           ))}

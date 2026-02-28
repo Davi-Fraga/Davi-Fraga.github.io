@@ -41,35 +41,7 @@ export const profile = {
     sectionTitle: "Projetos",
     sectionSubtitle: "Alguns dos projetos que desenvolvi recentemente",
     items: [
-      {
-        title: "SaaS de Atendimento Omnichannel (Front-end)",
-        description:
-          "Dashboard e telas de atendimento/gestão com foco em UX e organização.",
-        briefExplanation:
-          "Painel desenvolvido para centralizar a operação de atendimento ao cliente \u2014 reunindo visão geral, listas de chamados, status em tempo real e métricas de desempenho. A interface foi construída com componentes reutilizáveis e uma estrutura de UI consistente para facilitar a manutenção e escalabilidade do projeto.",
-        highlights: [
-          "Layout consistente e responsivo",
-          "Componentes reutilizáveis com shadcn/ui",
-          "Visão de métricas e dashboards",
-        ],
-        techBadges: ["Next.js", "Tailwind", "shadcn/ui"],
-        demoUrl: "#",
-        repoUrl: "#",
-      },
-      {
-        title: "GynLog Fleet Manager (Java Desktop)",
-        description: "Sistema desktop para gestão de frotas no padrão MVC.",
-        briefExplanation:
-          "Aplicação desktop que gerencia veículos e rotinas operacionais de frotas \u2014 incluindo cadastros, consultas e regras de negócio. Organizado em camadas seguindo o padrão MVC, com foco em clareza de domínio e facilidade de manutenção.",
-        highlights: [
-          "CRUD completo de veículos e rotinas",
-          "Arquitetura MVC bem definida",
-          "Regras de negócio encapsuladas",
-        ],
-        techBadges: ["Java", "Swing", "MVC"],
-        demoUrl: "#",
-        repoUrl: "#",
-      },
+      // 1. Alma da Prata — primeiro card
       {
         title: "Sistema de Organização de Loja (Alma da Prata)",
         description:
@@ -82,9 +54,29 @@ export const profile = {
           "Operação simples e intuitiva",
         ],
         techBadges: ["Java/Python", "HTML/CSS", "Git"],
-        demoUrl: "#",
+        // Demo: preencha demoUrl quando publicar a demo.
+        // Opção A (recomendada): hospede no Vercel/Netlify e cole a URL aqui.
+        // Opção B: crie uma rota interna /projects/alma-da-prata com screenshots
+        //          e aponte demoUrl para "/projects/alma-da-prata".
+        demoUrl: null,
         repoUrl: "#",
       },
+      // 2. GynLog Fleet Manager — sem Demo
+      {
+        title: "GynLog Fleet Manager (Java Desktop)",
+        description: "Sistema desktop para gestão de frotas no padrão MVC.",
+        briefExplanation:
+          "Aplicação desktop que gerencia veículos e rotinas operacionais de frotas \u2014 incluindo cadastros, consultas e regras de negócio. Organizado em camadas seguindo o padrão MVC, com foco em clareza de domínio e facilidade de manutenção.",
+        highlights: [
+          "CRUD completo de veículos e rotinas",
+          "Arquitetura MVC bem definida",
+          "Regras de negócio encapsuladas",
+        ],
+        techBadges: ["Java", "Swing", "MVC"],
+        demoUrl: null,
+        repoUrl: "https://github.com/lvpcdev/gynlog-fleet-manager.git",
+      },
+      // 3. API de Gestão — sem Demo
       {
         title: "API de Gestão (Back-end) \u2014 Java ou Python",
         description:
@@ -97,8 +89,24 @@ export const profile = {
           "Estrutura em camadas (controller/service/repository)",
         ],
         techBadges: ["Java", "Python", "Git"],
-        demoUrl: "#",
-        repoUrl: "#",
+        demoUrl: null,
+        repoUrl: "https://github.com/Davi-Fraga/Estagio-GetCoders.git",
+      },
+      // 4. PDV Posto de Combustível (novo, substituiu SaaS Omnichannel)
+      {
+        title: "PDV Posto de Combustível (Java Swing)",
+        description:
+          "Sistema desktop para gestão e abastecimento, integrado com banco de dados.",
+        briefExplanation:
+          "Aplicação em Java Swing focada em rotina de posto: cadastro/gestão de itens e operação de abastecimento. Persistência em banco de dados para manter registros e facilitar o controle operacional.",
+        highlights: [
+          "Módulos de gestão e cadastros",
+          "Tela/fluxo de abastecimento",
+          "Integração com banco de dados",
+        ],
+        techBadges: ["Java", "Swing", "JDBC", "Git"],
+        demoUrl: null,
+        repoUrl: "https://github.com/Davi-Fraga/pdv-posto-de-combustivel.git",
       },
     ],
   },

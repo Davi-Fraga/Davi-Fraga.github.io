@@ -1,6 +1,6 @@
 "use client";
 
-import { ExternalLink, Github, Sparkles, ChevronRight } from "lucide-react";
+import { ExternalLink, Github, ChevronRight } from "lucide-react";
 import {
   Card,
   CardHeader,
@@ -11,6 +11,12 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 interface ProjectCardProps {
   title: string;
@@ -18,8 +24,8 @@ interface ProjectCardProps {
   briefExplanation: string;
   highlights: readonly string[];
   techBadges: readonly string[];
-  demoUrl: string;
-  repoUrl: string;
+  demoUrl?: string | null;
+  repoUrl?: string | null;
 }
 
 export function ProjectCard({
@@ -31,6 +37,10 @@ export function ProjectCard({
   demoUrl,
   repoUrl,
 }: ProjectCardProps) {
+  const hasDemo = Boolean(demoUrl && demoUrl !== "#");
+  const hasRepo = Boolean(repoUrl && repoUrl !== "#");
+  const hasAnyButton = hasDemo || !hasDemo || hasRepo; // always show footer for layout consistency
+
   return (
     <Card className="group flex h-full flex-col transition-colors hover:border-primary/30">
       <CardHeader>
@@ -70,28 +80,57 @@ export function ProjectCard({
       </CardContent>
 
       <CardFooter className="gap-2">
-        <Button asChild variant="outline" size="sm" className="flex-1">
-          <a
-            href={demoUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`Demo de ${title}`}
-          >
-            <ExternalLink className="h-3.5 w-3.5" />
-            Demo
-          </a>
-        </Button>
-        <Button asChild variant="ghost" size="sm" className="flex-1">
-          <a
-            href={repoUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`Repositório de ${title}`}
-          >
-            <Github className="h-3.5 w-3.5" />
-            Repo
-          </a>
-        </Button>
+        {/* Demo button: show active if URL exists, disabled with tooltip if null */}
+        {hasDemo ? (
+          <Button asChild variant="outline" size="sm" className="flex-1">
+            <a
+              href={demoUrl!}
+              target="_blank"
+              rel="noreferrer"
+              aria-label={`Abrir demo de ${title}`}
+            >
+              <ExternalLink className="h-3.5 w-3.5" />
+              Demo
+            </a>
+          </Button>
+        ) : demoUrl === null ? (
+          <TooltipProvider delayDuration={200}>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <span className="flex-1">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    disabled
+                    className="w-full"
+                    aria-label={`Demo de ${title} \u2014 em breve`}
+                  >
+                    <ExternalLink className="h-3.5 w-3.5" />
+                    Demo
+                  </Button>
+                </span>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>Em breve</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
+        ) : null}
+
+        {/* Repo button: only show if URL exists */}
+        {hasRepo && (
+          <Button asChild variant="ghost" size="sm" className={hasDemo || demoUrl === null ? "flex-1" : "w-full"}>
+            <a
+              href={repoUrl!}
+              target="_blank"
+              rel="noreferrer"
+              aria-label={`Abrir repositório de ${title}`}
+            >
+              <Github className="h-3.5 w-3.5" />
+              Repo
+            </a>
+          </Button>
+        )}
       </CardFooter>
     </Card>
   );
