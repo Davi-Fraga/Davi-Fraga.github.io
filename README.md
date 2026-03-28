@@ -1,35 +1,34 @@
-# Portifolio-DaviFraga
+# ✨ Meu Portfólio Pessoal
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [v0](https://v0.app).
+Este repositório contém o código-fonte do meu site pessoal, projetado para mostrar minhas experiências, habilidades e projetos. É o meu "hub" profissional na web.
 
-## Built with v0
+![Status do Projeto](https://img.shields.io/badge/status-ativo-green)
 
-This repository is linked to a [v0](https://v0.app) project. You can continue developing by visiting the link below -- start new chats to make changes, and v0 will push commits directly to this repo. Every merge to `main` will automatically deploy.
+## 💻 Sobre o Projeto
 
-[Continue working on v0 →](https://v0.app/chat/projects/prj_3mioAhWA4q2pNceWEAIIjQQUtEc4)
+Este site foi construído com o objetivo de centralizar todas as minhas informações profissionais em um local acessível e visualmente agradável. Ele serve como uma apresentação interativa do meu currículo e dos trabalhos que desenvolvi.
 
-## Getting Started
+A estrutura foi organizada de forma modular para facilitar a manutenção e a adição de novas seções ou projetos no futuro.
 
-First, run the development server:
+## 🛠️ Tecnologias Utilizadas
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+Este projeto foi desenvolvido utilizando as seguintes tecnologias modernas:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Framework:** [Next.js](https://nextjs.org/) (identificado pelo arquivo `next.config.mjs`)
+- **Biblioteca UI:** [React](https://react.dev/) (implícito pelo uso de arquivos `.tsx`)
+- **Linguagem:** [TypeScript](https://www.typescriptlang.org/) (identificado pelos arquivos `.ts` e `.tsx`)
+- **Estilização:** [Tailwind CSS](https://tailwindcss.com/) (identificado pelo arquivo `tailwind.config.ts`)
+- **Componentes:** [shadcn-ui](https://ui.shadcn.com/) (inferido pela estrutura da pasta `components/ui` e arquivo `components.json`)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📂 Estrutura e Seções
 
-## Learn More
+O portfólio é composto pelas seguintes seções principais, cada uma isolada em seu próprio componente:
 
-To learn more, take a look at the following resources:
+- **Hero Section:** A primeira impressão do site, com uma introdução rápida.
+- **Seção Sobre:** Detalhes sobre a minha trajetória profissional.
+- **Seção de Projetos:** Exibição dos meus trabalhos através de cartões de projeto.
+- **Grade de Habilidades (Skills):** Visualização rápida das minhas competências técnicas.
+- **Linha do Tempo (Timeline):** Apresentação cronológica de experiências ou marcos.
+- **Seção de Contato:** Formulário ou links para me encontrar.
+- **Barra de Navegação e Rodapé.**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-- [v0 Documentation](https://v0.app/docs) - learn about v0 and how to use it.
-
-<a href="https://v0.app/chat/api/kiro/clone/Davi-Fraga/Portifolio-DaviFraga" alt="Open in Kiro"><img src="https://pdgvvgmkdvyeydso.public.blob.vercel-storage.com/open%20in%20kiro.svg?sanitize=true" /></a>
