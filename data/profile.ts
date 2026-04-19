@@ -1,6 +1,6 @@
 export const profile = {
   name: "Davi Fraga",
-  headline: "Back-end Developer (Java & Python) | Front-end (HTML/CSS)",
+  headline: "Back-end Developer (Java & Python) | Front-end (HTML/CSS + Angular)",
   subheadline:
     "Construo aplicações e automações com foco em clareza, performance e boa arquitetura. Aberto a oportunidades e freelance.",
 
@@ -9,11 +9,11 @@ export const profile = {
     sectionSubtitle: "Um pouco da minha história e motivação",
     paragraphs: [
       "Cursando Engenharia de Software na Faculdade SENAI FATESG (3\u00BA período). Meu foco é back-end com Java e Python \u2014 gosto de resolver problemas reais com código limpo e bem estruturado, criando automações e sistemas que funcionam de verdade.",
-      "Também estou evoluindo no front-end (HTML/CSS) para entregar produtos completos. Acredito que um desenvolvedor versátil entrega mais valor, e é isso que busco a cada projeto.",
+      "Também estou evoluindo no front-end (HTML/CSS e Angular) para entregar produtos completos. Acredito que um desenvolvedor versátil entrega mais valor, e é isso que busco a cada projeto.",
     ],
     highlights: [
       { label: "Back-end", value: "Java e Python" },
-      { label: "Front-end", value: "HTML/CSS" },
+      { label: "Front-end", value: "HTML/CSS + Angular" },
       { label: "Ferramentas", value: "Git + VSCode/IntelliJ + Cursor AI" },
     ],
   },
@@ -125,14 +125,19 @@ export const profile = {
       {
         title: "Operador de Suporte em Tecnologia da Informação",
         institution: "SENAI",
-        period: "2023 \u2014 2024",
+        period: "2025 — 2026",
       },
     ],
     experience: [
       {
+        title: "Estagiário de Desenvolvimento",
+        institution: "GetCoders",
+        period: "2025 — atual",
+      },
+      {
         title: "Projetos próprios e acadêmicos",
         institution: "Portfólio pessoal",
-        period: "2024 \u2014 atual",
+        period: "2024 — atual",
       },
     ],
   },
