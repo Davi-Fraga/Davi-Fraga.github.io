@@ -28,7 +28,7 @@ export const profile = {
       },
       {
         category: "Front-end",
-        items: ["HTML", "CSS"],
+        items: ["HTML", "CSS", "JavaScript", "TypeScript", "Angular"],
       },
       {
         category: "Ferramentas",
