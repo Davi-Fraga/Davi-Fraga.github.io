@@ -8,7 +8,7 @@ export const profile = {
     sectionTitle: "Sobre mim",
     sectionSubtitle: "Um pouco da minha história e motivação",
     paragraphs: [
-      "Cursando Engenharia de Software na Faculdade SENAI FATESG (3\u00BA período). Meu foco é back-end com Java e Python \u2014 gosto de resolver problemas reais com código limpo e bem estruturado, criando automações e sistemas que funcionam de verdade.",
+      "Cursando Engenharia de Software na Faculdade SENAI FATESG (3º período). Meu foco é back-end com Java e Python — gosto de resolver problemas reais com código limpo e bem estruturado, criando automações e sistemas que funcionam de verdade.",
       "Também estou evoluindo no front-end (HTML/CSS e Angular) para entregar produtos completos. Acredito que um desenvolvedor versátil entrega mais valor, e é isso que busco a cada projeto.",
     ],
     highlights: [
@@ -19,20 +19,84 @@ export const profile = {
   },
 
   skills: {
-    sectionTitle: "Habilidades",
-    sectionSubtitle: "Tecnologias e ferramentas que utilizo no dia a dia",
+    sectionTitle: "Stack & Ferramentas",
+    sectionSubtitle: "Tecnologias que utilizo para construir soluções de ponta a ponta",
+    sectionBadge: "Tecnologias",
     categories: [
       {
-        category: "Back-end",
-        items: ["Java", "Python"],
+        category: "Linguagens",
+        description: "Base sólida para back-end e front-end",
+        items: [
+          { name: "Java", primary: true },
+          { name: "Python", primary: true },
+          { name: "JavaScript", primary: true },
+          { name: "TypeScript", primary: false },
+          { name: "Kotlin", primary: false },
+        ],
       },
       {
         category: "Front-end",
-        items: ["HTML", "CSS", "JavaScript", "TypeScript", "Angular"],
+        description: "Interfaces modernas e responsivas",
+        items: [
+          { name: "Angular", primary: true },
+          { name: "React", primary: false },
+          { name: "Next.js", primary: false },
+          { name: "HTML", primary: false },
+          { name: "CSS", primary: false },
+        ],
       },
       {
-        category: "Ferramentas",
-        items: ["IntelliJ IDEA", "VSCode", "Git", "Cursor AI"],
+        category: "Back-end & APIs",
+        description: "Serviços robustos e escaláveis",
+        items: [
+          { name: "Spring Boot", primary: true },
+          { name: "FastAPI", primary: false },
+          { name: "Flask", primary: false },
+          { name: "Express", primary: false },
+        ],
+      },
+      {
+        category: "Banco de Dados",
+        description: "Persistência e modelagem de dados",
+        items: [
+          { name: "PostgreSQL", primary: true },
+          { name: "MongoDB", primary: false },
+          { name: "SQLite", primary: false },
+          { name: "Redis", primary: false },
+          { name: "Oracle", primary: false },
+        ],
+      },
+      {
+        category: "Infra & DevOps",
+        description: "Deploy, versionamento e containers",
+        items: [
+          { name: "Docker", primary: true },
+          { name: "Git", primary: true },
+          { name: "GitHub", primary: false },
+          { name: "Vercel", primary: false },
+          { name: "Nginx", primary: false },
+        ],
+      },
+      {
+        category: "IA & Ferramentas",
+        description: "Produtividade com inteligência artificial",
+        items: [
+          { name: "OpenAI", primary: false },
+          { name: "Claude", primary: false },
+          { name: "Gemini", primary: false },
+          { name: "DeepSeek", primary: false },
+          { name: "Cursor AI", primary: true },
+        ],
+      },
+      {
+        category: "Especializado",
+        description: "Ferramentas de nicho e integrações",
+        items: [
+          { name: "Sankhya ERP", primary: false },
+          { name: "Evolution API", primary: false },
+          { name: "WebXR", primary: false },
+          { name: "A-Frame", primary: false },
+        ],
       },
     ],
   },
@@ -41,32 +105,26 @@ export const profile = {
     sectionTitle: "Projetos",
     sectionSubtitle: "Alguns dos projetos que desenvolvi recentemente",
     items: [
-      // 1. Alma da Prata — primeiro card
       {
         title: "Sistema de Organização de Loja (Alma da Prata)",
         description:
           "Controle e organização de itens e rotinas do negócio (protótipo/gestão).",
         briefExplanation:
-          "Sistema pensado para centralizar cadastros e oferecer visão geral da operação de uma loja \u2014 gerenciando itens, rotinas e organização interna. O objetivo é reduzir a desorganização do dia a dia e melhorar o controle do negócio de forma simples e acessível.",
+          "Sistema pensado para centralizar cadastros e oferecer visão geral da operação de uma loja — gerenciando itens, rotinas e organização interna. O objetivo é reduzir a desorganização do dia a dia e melhorar o controle do negócio de forma simples e acessível.",
         highlights: [
           "Cadastros de itens e categorias",
           "Visão geral da operação",
           "Operação simples e intuitiva",
         ],
         techBadges: ["Java/Python", "HTML/CSS", "Git"],
-        // Demo: preencha demoUrl quando publicar a demo.
-        // Opção A (recomendada): hospede no Vercel/Netlify e cole a URL aqui.
-        // Opção B: crie uma rota interna /projects/alma-da-prata com screenshots
-        //          e aponte demoUrl para "/projects/alma-da-prata".
         demoUrl: null,
         repoUrl: "#",
       },
-      // 2. GynLog Fleet Manager — sem Demo
       {
         title: "GynLog Fleet Manager (Java Desktop)",
         description: "Sistema desktop para gestão de frotas no padrão MVC.",
         briefExplanation:
-          "Aplicação desktop que gerencia veículos e rotinas operacionais de frotas \u2014 incluindo cadastros, consultas e regras de negócio. Organizado em camadas seguindo o padrão MVC, com foco em clareza de domínio e facilidade de manutenção.",
+          "Aplicação desktop que gerencia veículos e rotinas operacionais de frotas — incluindo cadastros, consultas e regras de negócio. Organizado em camadas seguindo o padrão MVC, com foco em clareza de domínio e facilidade de manutenção.",
         highlights: [
           "CRUD completo de veículos e rotinas",
           "Arquitetura MVC bem definida",
@@ -76,9 +134,8 @@ export const profile = {
         demoUrl: null,
         repoUrl: "https://github.com/lvpcdev/gynlog-fleet-manager.git",
       },
-      // 3. API de Gestão — sem Demo
       {
-        title: "API de Gestão (Back-end) \u2014 Java ou Python",
+        title: "API de Gestão (Back-end) — Java ou Python",
         description:
           "API REST para cadastro e consulta de dados com validações.",
         briefExplanation:
@@ -92,7 +149,6 @@ export const profile = {
         demoUrl: null,
         repoUrl: "https://github.com/Davi-Fraga/Estagio-GetCoders.git",
       },
-      // 4. PDV Posto de Combustível (novo, substituiu SaaS Omnichannel)
       {
         title: "PDV Posto de Combustível (Java Swing)",
         description:
@@ -118,9 +174,9 @@ export const profile = {
     experienceLabel: "Experiência",
     education: [
       {
-        title: "Engenharia de Software \u2014 3\u00BA período (em andamento)",
+        title: "Engenharia de Software — 3º período (em andamento)",
         institution: "Faculdade SENAI FATESG",
-        period: "2024 \u2014 atual",
+        period: "2024 — atual",
       },
       {
         title: "Operador de Suporte em Tecnologia da Informação",
@@ -133,11 +189,14 @@ export const profile = {
         title: "Estagiário de Desenvolvimento",
         institution: "GetCoders",
         period: "2025 — atual",
+        description:
+          "Atuação em projetos de desenvolvimento back-end e front-end, aplicando boas práticas de código, versionamento com Git e metodologias ágeis. Participação em sprints, code reviews e entregas contínuas em ambiente colaborativo.",
       },
       {
         title: "Projetos próprios e acadêmicos",
         institution: "Portfólio pessoal",
         period: "2024 — atual",
+        description: null,
       },
     ],
   },
@@ -169,7 +228,7 @@ export const profile = {
   },
 
   footer: {
-    text: "Feito com Next.js + Tailwind. \u00A9 2026 Davi Fraga",
+    text: "Feito com Next.js + Tailwind. © 2026 Davi Fraga",
   },
 } as const;
 
