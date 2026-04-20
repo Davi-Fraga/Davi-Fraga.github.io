@@ -105,25 +105,31 @@ export function SkillsGrid() {
 
                   {/* Tech pills */}
                   <div className="flex flex-wrap gap-2">
-                    {cat.items.map((skill) => (
-                      <Badge
-                        key={skill.name}
-                        variant={skill.primary ? "default" : "secondary"}
-                        className={`
-                          cursor-default text-xs font-medium transition-all duration-200
-                          ${
-                            skill.primary
-                              ? "border-primary/30 bg-primary/10 text-primary hover:bg-primary/20 hover:border-primary/50"
-                              : "border-border bg-secondary/50 text-muted-foreground hover:bg-secondary hover:text-foreground hover:border-muted-foreground/30"
-                          }
-                        `}
-                      >
-                        {skill.primary && (
-                          <Star className="mr-1 h-3 w-3 fill-primary/50" />
-                        )}
-                        {skill.name}
-                      </Badge>
-                    ))}
+                    {cat.items.length > 0 ? (
+                      cat.items.map((skill) => (
+                        <Badge
+                          key={skill.name}
+                          variant={skill.primary ? "default" : "secondary"}
+                          className={`
+                            cursor-default text-xs font-medium transition-all duration-200
+                            ${
+                              skill.primary
+                                ? "border-primary/30 bg-primary/10 text-primary hover:bg-primary/20 hover:border-primary/50"
+                                : "border-border bg-secondary/50 text-muted-foreground hover:bg-secondary hover:text-foreground hover:border-muted-foreground/30"
+                            }
+                          `}
+                        >
+                          {skill.primary && (
+                            <Star className="mr-1 h-3 w-3 fill-primary/50" />
+                          )}
+                          {skill.name}
+                        </Badge>
+                      ))
+                    ) : (
+                      <span className="text-xs italic text-muted-foreground/60">
+                        Em breve...
+                      </span>
+                    )}
                   </div>
 
                   {/* Hover glow effect */}

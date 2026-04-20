@@ -10,7 +10,7 @@ import { profile } from "@/data/profile";
 const navLinks = [
   { label: "Home", href: "#inicio" },
   { label: "About", href: "#sobre" },
-  { label: "Skills", href: "#habilidades" },
+  { label: "Stack", href: "#habilidades" },
   { label: "Projects", href: "#projetos" },
   { label: "Experience", href: "#experiencia" },
   { label: "Contact", href: "#contato" },

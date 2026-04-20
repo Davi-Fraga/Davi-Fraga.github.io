@@ -31,7 +31,6 @@ export const profile = {
           { name: "Python", primary: true },
           { name: "JavaScript", primary: true },
           { name: "TypeScript", primary: false },
-          { name: "Kotlin", primary: false },
         ],
       },
       {
@@ -40,7 +39,6 @@ export const profile = {
         items: [
           { name: "Angular", primary: true },
           { name: "React", primary: false },
-          { name: "Next.js", primary: false },
           { name: "HTML", primary: false },
           { name: "CSS", primary: false },
         ],
@@ -51,8 +49,6 @@ export const profile = {
         items: [
           { name: "Spring Boot", primary: true },
           { name: "FastAPI", primary: false },
-          { name: "Flask", primary: false },
-          { name: "Express", primary: false },
         ],
       },
       {
@@ -60,9 +56,7 @@ export const profile = {
         description: "Persistência e modelagem de dados",
         items: [
           { name: "PostgreSQL", primary: true },
-          { name: "MongoDB", primary: false },
           { name: "SQLite", primary: false },
-          { name: "Redis", primary: false },
           { name: "Oracle", primary: false },
         ],
       },
@@ -74,7 +68,6 @@ export const profile = {
           { name: "Git", primary: true },
           { name: "GitHub", primary: false },
           { name: "Vercel", primary: false },
-          { name: "Nginx", primary: false },
         ],
       },
       {
@@ -84,19 +77,13 @@ export const profile = {
           { name: "OpenAI", primary: false },
           { name: "Claude", primary: false },
           { name: "Gemini", primary: false },
-          { name: "DeepSeek", primary: false },
           { name: "Cursor AI", primary: true },
         ],
       },
       {
         category: "Especializado",
         description: "Ferramentas de nicho e integrações",
-        items: [
-          { name: "Sankhya ERP", primary: false },
-          { name: "Evolution API", primary: false },
-          { name: "WebXR", primary: false },
-          { name: "A-Frame", primary: false },
-        ],
+        items: [],
       },
     ],
   },

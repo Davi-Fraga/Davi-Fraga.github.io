@@ -1,11 +1,8 @@
 "use client";
 
-import { Code2, Monitor, Wrench } from "lucide-react";
 import { SectionTitle } from "@/components/section-title";
-import { FadeIn, StaggerContainer, StaggerItem } from "@/components/motion-wrapper";
+import { FadeIn } from "@/components/motion-wrapper";
 import { profile } from "@/data/profile";
-
-const highlightIcons = [Code2, Monitor, Wrench];
 
 export function AboutSection() {
   return (
@@ -20,27 +17,6 @@ export function AboutSection() {
             ))}
           </div>
         </FadeIn>
-
-        <StaggerContainer className="mt-10 grid gap-4 sm:grid-cols-3">
-          {profile.about.highlights.map((h, i) => {
-            const Icon = highlightIcons[i];
-            return (
-              <StaggerItem key={h.label}>
-                <div className="flex items-start gap-3 rounded-lg border border-border bg-card p-4 transition-colors hover:border-primary/30">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-primary/10 text-primary">
-                    <Icon className="h-5 w-5" />
-                  </div>
-                  <div>
-                    <p className="text-sm font-semibold text-foreground">
-                      {h.label}
-                    </p>
-                    <p className="text-sm text-muted-foreground">{h.value}</p>
-                  </div>
-                </div>
-              </StaggerItem>
-            );
-          })}
-        </StaggerContainer>
       </div>
     </section>
   );
