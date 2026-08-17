@@ -1,67 +1,63 @@
-import { Github, Linkedin, Phone, Instagram, Terminal } from "lucide-react";
+import { Github, Linkedin, Mail, Code2 } from "lucide-react";
 import { profile } from "@/data/profile";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
-
-const socialLinks = [
-  { label: "GitHub", icon: Github, href: profile.contact.social.github },
-  { label: "LinkedIn", icon: Linkedin, href: profile.contact.social.linkedin },
-  { label: "WhatsApp", icon: Phone, href: profile.contact.social.whatsapp },
-  { label: "Instagram", icon: Instagram, href: profile.contact.social.instagram },
-];
 
 export function Footer() {
+  const currentYear = new Date().getFullYear();
+
   return (
-    <footer className="border-t border-border bg-card" role="contentinfo">
-      <div className="mx-auto flex max-w-6xl flex-col items-center gap-4 px-4 py-8 md:flex-row md:justify-between md:px-6">
-        <div className="flex items-center gap-2 text-sm text-muted-foreground">
-          <Terminal className="h-4 w-4 text-primary" />
-          <span>{profile.footer.text}</span>
+    <footer className="border-t border-border/60 bg-card py-10" role="contentinfo">
+      <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 px-4 sm:flex-row sm:px-6">
+        {/* Brand & Role */}
+        <div className="flex flex-col items-center sm:items-start gap-1">
+          <div className="flex items-center gap-2 text-foreground font-bold">
+            <Code2 className="h-4 w-4 text-primary" />
+            <span>{profile.name}</span>
+            <span className="text-muted-foreground/50 font-normal">|</span>
+            <span className="text-xs font-mono text-primary font-medium">
+              {profile.footer.role}
+            </span>
+          </div>
+          <p className="text-xs text-muted-foreground">
+            © {currentYear} {profile.name}. Todos os direitos reservados.
+          </p>
         </div>
 
-        <TooltipProvider delayDuration={200}>
-          <div className="flex items-center gap-3">
-            {socialLinks.map((link) => {
-              const isDisabled = link.href === null;
+        {/* Links */}
+        <div className="flex items-center gap-4">
+          {profile.links.github && (
+            <a
+              href={profile.links.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted-foreground transition-colors hover:text-primary"
+              aria-label="GitHub"
+            >
+              <Github className="h-4 w-4" />
+            </a>
+          )}
 
-              if (isDisabled) {
-                return (
-                  <Tooltip key={link.label}>
-                    <TooltipTrigger asChild>
-                      <span
-                        className="inline-flex cursor-not-allowed text-muted-foreground/40"
-                        aria-disabled="true"
-                        aria-label={`${link.label} (em breve)`}
-                      >
-                        <link.icon className="h-5 w-5" />
-                      </span>
-                    </TooltipTrigger>
-                    <TooltipContent>
-                      <p>Em breve</p>
-                    </TooltipContent>
-                  </Tooltip>
-                );
-              }
+          {profile.links.linkedin && (
+            <a
+              href={profile.links.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted-foreground transition-colors hover:text-primary"
+              aria-label="LinkedIn"
+            >
+              <Linkedin className="h-4 w-4" />
+            </a>
+          )}
 
-              return (
-                <a
-                  key={link.label}
-                  href={link.href!}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-muted-foreground transition-colors hover:text-primary"
-                  aria-label={link.label}
-                >
-                  <link.icon className="h-5 w-5" />
-                </a>
-              );
-            })}
-          </div>
-        </TooltipProvider>
+          {profile.contact.channels.email && (
+            <a
+              href={`mailto:${profile.contact.channels.email}`}
+              className="text-muted-foreground transition-colors hover:text-primary"
+              aria-label="Email"
+            >
+              <Mail className="h-4 w-4" />
+            </a>
+          )}
+        </div>
       </div>
     </footer>
   );

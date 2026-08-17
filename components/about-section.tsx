@@ -1,46 +1,61 @@
 "use client";
 
-import { Code2, Monitor, Wrench } from "lucide-react";
+import { Cpu, ShieldCheck, CheckCircle2, Terminal } from "lucide-react";
 import { SectionTitle } from "@/components/section-title";
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/motion-wrapper";
 import { profile } from "@/data/profile";
 
-const highlightIcons = [Code2, Monitor, Wrench];
+const principleIcons = [Cpu, ShieldCheck, CheckCircle2];
 
 export function AboutSection() {
   return (
-    <section id="sobre" className="py-20 md:py-28" aria-label={profile.about.sectionTitle}>
-      <div className="mx-auto max-w-4xl px-4 md:px-6">
-        <SectionTitle title={profile.about.sectionTitle} subtitle={profile.about.sectionSubtitle} />
+    <section id="sobre" className="py-20 md:py-28" aria-label="Sobre o desenvolvedor">
+      <div className="mx-auto max-w-5xl px-4 sm:px-6">
+        <SectionTitle
+          eyebrow="Perfil Profissional"
+          title={profile.about.sectionTitle}
+          subtitle={profile.about.sectionSubtitle}
+        />
 
-        <FadeIn>
-          <div className="space-y-4 text-base leading-relaxed text-muted-foreground md:text-lg">
-            {profile.about.paragraphs.map((p, i) => (
-              <p key={i} className="text-pretty">{p}</p>
+        {/* Narrative Paragraphs */}
+        <FadeIn className="space-y-4 rounded-2xl border border-border/80 bg-card p-6 sm:p-8 md:p-10 shadow-sm">
+          <div className="space-y-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
+            {profile.about.paragraphs.map((paragraph, index) => (
+              <p key={index} className="text-pretty">
+                {paragraph}
+              </p>
             ))}
           </div>
         </FadeIn>
 
-        <StaggerContainer className="mt-10 grid gap-4 sm:grid-cols-3">
-          {profile.about.highlights.map((h, i) => {
-            const Icon = highlightIcons[i];
-            return (
-              <StaggerItem key={h.label}>
-                <div className="flex items-start gap-3 rounded-lg border border-border bg-card p-4 transition-colors hover:border-primary/30">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-primary/10 text-primary">
-                    <Icon className="h-5 w-5" />
-                  </div>
-                  <div>
-                    <p className="text-sm font-semibold text-foreground">
-                      {h.label}
+        {/* Engineering Principles */}
+        <div className="mt-10">
+          <p className="font-mono text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-4 text-center">
+            Princípios & Foco de Engenharia
+          </p>
+
+          <StaggerContainer className="grid gap-4 sm:grid-cols-3">
+            {profile.about.principles.map((principle, index) => {
+              const Icon = principleIcons[index % principleIcons.length];
+
+              return (
+                <StaggerItem key={principle.title}>
+                  <div className="h-full rounded-xl border border-border/80 bg-card/70 p-5 transition-colors hover:border-primary/40">
+                    <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary/10 text-primary mb-3">
+                      <Icon className="h-4 w-4" />
+                    </div>
+                    <h3 className="text-sm font-bold text-foreground">
+                      {principle.title}
+                    </h3>
+                    <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">
+                      {principle.description}
                     </p>
-                    <p className="text-sm text-muted-foreground">{h.value}</p>
                   </div>
-                </div>
-              </StaggerItem>
-            );
-          })}
-        </StaggerContainer>
+                </StaggerItem>
+              );
+            })}
+          </StaggerContainer>
+        </div>
       </div>
     </section>
   );

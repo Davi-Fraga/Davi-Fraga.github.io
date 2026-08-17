@@ -1,172 +1,193 @@
 "use client";
 
-import { Github, Linkedin, Instagram, Phone, Send } from "lucide-react";
+import { useState } from "react";
+import { Mail, Linkedin, Github, MessageSquare, Copy, Check, ArrowUpRight, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { FadeIn } from "@/components/motion-wrapper";
+import { FadeIn, StaggerContainer, StaggerItem } from "@/components/motion-wrapper";
 import { profile } from "@/data/profile";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
-
-const socialItems = [
-  {
-    label: "GitHub",
-    icon: Github,
-    href: profile.contact.social.github,
-  },
-  {
-    label: "LinkedIn",
-    icon: Linkedin,
-    href: profile.contact.social.linkedin,
-  },
-  {
-    label: "Instagram",
-    icon: Instagram,
-    href: profile.contact.social.instagram,
-  },
-];
+import { toast } from "sonner";
 
 export function ContactSection() {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopyEmail = () => {
+    if (profile.contact.channels.email) {
+      navigator.clipboard.writeText(profile.contact.channels.email);
+      setCopied(true);
+      toast.success("E-mail copiado para a área de transferência!");
+      setTimeout(() => setCopied(false), 2000);
+    }
+  };
+
   return (
-    <section id="contato" className="py-20 md:py-28" aria-label="Contato">
-      <div className="mx-auto max-w-5xl px-4 md:px-6">
-        {/* Custom title with highlighted word */}
-        <FadeIn className="mb-12 text-center">
-          <h2 className="text-3xl font-bold tracking-tight text-foreground md:text-4xl text-balance">
-            Fale <span className="text-primary">Comigo</span>
+    <section id="contato" className="py-20 md:py-28" aria-label="Contato profissional">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+        <FadeIn className="text-center max-w-2xl mx-auto mb-12">
+          <span className="font-mono text-xs font-semibold uppercase tracking-wider text-primary mb-3 inline-block">
+            [ OPORTUNIDADES & CONEXÃO ]
+          </span>
+          <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            {profile.contact.title}
           </h2>
-          <p className="mt-3 text-muted-foreground text-base md:text-lg text-pretty">
-            {profile.contact.message}
+          <p className="mt-3 text-sm leading-relaxed text-muted-foreground sm:text-base text-pretty">
+            {profile.contact.subtitle}
           </p>
         </FadeIn>
 
-        <div className="grid gap-6 md:grid-cols-2">
-          {/* LEFT CARD */}
-          <FadeIn direction="left">
-            <div className="flex h-full flex-col justify-between rounded-xl border border-border bg-card p-6 md:p-8">
-              <div>
-                <h3 className="text-xl font-bold text-foreground md:text-2xl">
-                  {profile.contact.cardTitle}
-                </h3>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground md:text-base">
-                  {profile.contact.cardText}
-                </p>
-
-                {/* WhatsApp info block */}
-                <div className="mt-6 flex items-center gap-3 rounded-lg border border-border bg-secondary/50 px-4 py-3">
-                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary/10">
-                    <Phone className="h-4 w-4 text-primary" />
-                  </div>
-                  <div>
-                    <p className="text-sm font-semibold text-foreground">
-                      {profile.contact.whatsappLabel}
-                    </p>
-                    <p className="text-xs text-muted-foreground">
-                      {profile.contact.whatsappHint}
-                    </p>
-                  </div>
+        {/* Balanced 4-Card Grid */}
+        <StaggerContainer className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {/* Card 1: E-mail */}
+          <StaggerItem>
+            <div className="flex h-full flex-col justify-between rounded-xl border border-border/80 bg-card p-5 sm:p-6 transition-all hover:border-primary/40 hover:shadow-sm">
+              <div className="space-y-3">
+                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                  <Mail className="h-5 w-5" />
+                </div>
+                <div>
+                  <h3 className="text-base font-bold text-foreground">E-mail</h3>
+                  <p className="text-xs text-muted-foreground mt-0.5">
+                    Propostas e vagas formais
+                  </p>
+                </div>
+                <div className="rounded-md border border-border/70 bg-secondary/40 p-2 text-center">
+                  <span className="font-mono text-xs text-foreground font-semibold truncate block select-all">
+                    {profile.contact.channels.email}
+                  </span>
                 </div>
               </div>
 
-              {/* Social icons row */}
-              <div className="mt-8">
-                <p className="mb-3 text-xs font-medium uppercase tracking-wider text-muted-foreground">
-                  {profile.contact.socialLabel}
-                </p>
-                <TooltipProvider delayDuration={200}>
-                  <div className="flex items-center gap-3">
-                    {socialItems.map((item) => {
-                      const isDisabled = item.href === null;
-
-                      if (isDisabled) {
-                        return (
-                          <Tooltip key={item.label}>
-                            <TooltipTrigger asChild>
-                              <span>
-                                <Button
-                                  variant="outline"
-                                  size="icon"
-                                  disabled
-                                  className="h-10 w-10 cursor-not-allowed opacity-40"
-                                  aria-label={`${item.label} (em breve)`}
-                                >
-                                  <item.icon className="h-5 w-5" />
-                                </Button>
-                              </span>
-                            </TooltipTrigger>
-                            <TooltipContent>
-                              <p>Em breve</p>
-                            </TooltipContent>
-                          </Tooltip>
-                        );
-                      }
-
-                      return (
-                        <Tooltip key={item.label}>
-                          <TooltipTrigger asChild>
-                            <Button
-                              variant="outline"
-                              size="icon"
-                              className="h-10 w-10 transition-colors hover:border-primary hover:text-primary"
-                              asChild
-                            >
-                              <a
-                                href={item.href}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                aria-label={`Abrir ${item.label}`}
-                              >
-                                <item.icon className="h-5 w-5" />
-                              </a>
-                            </Button>
-                          </TooltipTrigger>
-                          <TooltipContent>
-                            <p>{item.label}</p>
-                          </TooltipContent>
-                        </Tooltip>
-                      );
-                    })}
-                  </div>
-                </TooltipProvider>
-              </div>
-            </div>
-          </FadeIn>
-
-          {/* RIGHT CARD */}
-          <FadeIn direction="right">
-            <div className="flex h-full flex-col items-center justify-center rounded-xl border border-border bg-card p-6 text-center md:p-8">
-              <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/10">
-                <Send className="h-8 w-8 text-primary" />
-              </div>
-
-              <h3 className="text-xl font-bold text-foreground md:text-2xl">
-                {profile.contact.rightCardTitle}
-              </h3>
-              <p className="mt-3 max-w-xs text-sm leading-relaxed text-muted-foreground md:text-base">
-                {profile.contact.rightCardText}
-              </p>
-
-              <Button
-                asChild
-                size="lg"
-                className="mt-8 w-full max-w-xs gap-2"
-              >
-                <a
-                  href={profile.contact.social.whatsapp!}
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label={profile.contact.rightCardCta}
+              <div className="mt-4 flex flex-col gap-2 pt-3 border-t border-border/40">
+                <Button
+                  size="sm"
+                  variant="outline"
+                  onClick={handleCopyEmail}
+                  className="w-full gap-1.5 text-xs h-8"
+                  aria-label="Copiar endereço de e-mail"
                 >
-                  <Phone className="h-4 w-4" />
-                  {profile.contact.rightCardCta}
-                </a>
-              </Button>
+                  {copied ? (
+                    <>
+                      <Check className="h-3.5 w-3.5 text-primary" />
+                      <span>Copiado!</span>
+                    </>
+                  ) : (
+                    <>
+                      <Copy className="h-3.5 w-3.5" />
+                      <span>Copiar E-mail</span>
+                    </>
+                  )}
+                </Button>
+                <Button asChild size="sm" className="w-full gap-1.5 text-xs h-8 font-semibold">
+                  <a href={`mailto:${profile.contact.channels.email}`}>
+                    <Send className="h-3.5 w-3.5" />
+                    <span>Escrever E-mail</span>
+                  </a>
+                </Button>
+              </div>
             </div>
-          </FadeIn>
-        </div>
+          </StaggerItem>
+
+          {/* Card 2: LinkedIn */}
+          <StaggerItem>
+            <div className="flex h-full flex-col justify-between rounded-xl border border-border/80 bg-card p-5 sm:p-6 transition-all hover:border-primary/40 hover:shadow-sm">
+              <div className="space-y-3">
+                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                  <Linkedin className="h-5 w-5" />
+                </div>
+                <div>
+                  <h3 className="text-base font-bold text-foreground">LinkedIn</h3>
+                  <p className="text-xs text-muted-foreground mt-0.5">
+                    Conexões e networking
+                  </p>
+                </div>
+                <p className="text-xs text-muted-foreground leading-relaxed">
+                  Acompanhe atualizações sobre minha carreira e formação em Engenharia de Software.
+                </p>
+              </div>
+
+              <div className="mt-4 pt-3 border-t border-border/40">
+                <Button asChild variant="outline" size="sm" className="w-full gap-1.5 text-xs h-8 border-border hover:border-primary/40">
+                  <a
+                    href={profile.contact.channels.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Acessar perfil no LinkedIn"
+                  >
+                    <span>Abrir Perfil</span>
+                    <ArrowUpRight className="h-3.5 w-3.5" />
+                  </a>
+                </Button>
+              </div>
+            </div>
+          </StaggerItem>
+
+          {/* Card 3: GitHub */}
+          <StaggerItem>
+            <div className="flex h-full flex-col justify-between rounded-xl border border-border/80 bg-card p-5 sm:p-6 transition-all hover:border-primary/40 hover:shadow-sm">
+              <div className="space-y-3">
+                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                  <Github className="h-5 w-5" />
+                </div>
+                <div>
+                  <h3 className="text-base font-bold text-foreground">GitHub</h3>
+                  <p className="text-xs text-muted-foreground mt-0.5">
+                    Código e contribuições
+                  </p>
+                </div>
+                <p className="text-xs text-muted-foreground leading-relaxed">
+                  Explore commits, arquiteturas e projetos com histórico aberto no GitHub.
+                </p>
+              </div>
+
+              <div className="mt-4 pt-3 border-t border-border/40">
+                <Button asChild variant="outline" size="sm" className="w-full gap-1.5 text-xs h-8 border-border hover:border-primary/40">
+                  <a
+                    href={profile.contact.channels.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Acessar perfil no GitHub"
+                  >
+                    <span>Ver Repositórios</span>
+                    <ArrowUpRight className="h-3.5 w-3.5" />
+                  </a>
+                </Button>
+              </div>
+            </div>
+          </StaggerItem>
+
+          {/* Card 4: WhatsApp */}
+          <StaggerItem>
+            <div className="flex h-full flex-col justify-between rounded-xl border border-border/80 bg-card p-5 sm:p-6 transition-all hover:border-primary/40 hover:shadow-sm">
+              <div className="space-y-3">
+                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-500/10 text-emerald-500">
+                  <MessageSquare className="h-5 w-5" />
+                </div>
+                <div>
+                  <h3 className="text-base font-bold text-foreground">WhatsApp</h3>
+                  <p className="text-xs text-muted-foreground mt-0.5">
+                    Contato direto e ágil
+                  </p>
+                </div>
+                <p className="text-xs text-muted-foreground leading-relaxed">
+                  Canal direto para mensagens rápidas sobre oportunidades e dúvidas.
+                </p>
+              </div>
+
+              <div className="mt-4 pt-3 border-t border-border/40">
+                <Button asChild variant="outline" size="sm" className="w-full gap-1.5 text-xs h-8 border-border hover:border-emerald-500/40">
+                  <a
+                    href={profile.contact.channels.whatsapp}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Enviar mensagem no WhatsApp"
+                  >
+                    <span>Enviar Mensagem</span>
+                    <ArrowUpRight className="h-3.5 w-3.5 text-emerald-500" />
+                  </a>
+                </Button>
+              </div>
+            </div>
+          </StaggerItem>
+        </StaggerContainer>
       </div>
     </section>
   );

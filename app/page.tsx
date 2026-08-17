@@ -1,22 +1,26 @@
 import { Navbar } from "@/components/navbar";
 import { Hero } from "@/components/hero";
-import { AboutSection } from "@/components/about-section";
-import { SkillsGrid } from "@/components/skills-grid";
+import { MetricsSection } from "@/components/metrics-section";
 import { ProjectsSection } from "@/components/projects-section";
-import { TimelineSection } from "@/components/timeline-section";
+import { AcademicProjectsSection } from "@/components/academic-projects-section";
+import { ExperienceSection } from "@/components/experience-section";
+import { SkillsGrid } from "@/components/skills-grid";
+import { AboutSection } from "@/components/about-section";
 import { ContactSection } from "@/components/contact-section";
 import { Footer } from "@/components/footer";
 
-export default function Page() {
+export default function HomePage() {
   return (
     <>
       <Navbar />
-      <main>
+      <main id="main-content">
         <Hero />
-        <AboutSection />
-        <SkillsGrid />
+        <MetricsSection />
         <ProjectsSection />
-        <TimelineSection />
+        <AcademicProjectsSection />
+        <ExperienceSection />
+        <SkillsGrid />
+        <AboutSection />
         <ContactSection />
       </main>
       <Footer />
