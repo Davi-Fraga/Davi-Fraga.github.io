@@ -22,17 +22,17 @@ export function Footer() {
           </p>
         </div>
 
-        {/* Links */}
-        <div className="flex items-center gap-4">
+        {/* Links with comfortable 44px min touch target */}
+        <div className="flex items-center gap-2">
           {profile.links.github && (
             <a
               href={profile.links.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-muted-foreground transition-colors hover:text-primary"
+              className="flex h-11 w-11 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-secondary hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
               aria-label="GitHub"
             >
-              <Github className="h-4 w-4" />
+              <Github className="h-5 w-5" />
             </a>
           )}
 
@@ -41,20 +41,20 @@ export function Footer() {
               href={profile.links.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-muted-foreground transition-colors hover:text-primary"
+              className="flex h-11 w-11 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-secondary hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
               aria-label="LinkedIn"
             >
-              <Linkedin className="h-4 w-4" />
+              <Linkedin className="h-5 w-5" />
             </a>
           )}
 
           {profile.contact.channels.email && (
             <a
               href={`mailto:${profile.contact.channels.email}`}
-              className="text-muted-foreground transition-colors hover:text-primary"
+              className="flex h-11 w-11 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-secondary hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
               aria-label="Email"
             >
-              <Mail className="h-4 w-4" />
+              <Mail className="h-5 w-5" />
             </a>
           )}
         </div>

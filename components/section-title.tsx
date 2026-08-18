@@ -1,4 +1,4 @@
-import { FadeIn } from "@/components/motion-wrapper";
+import { Reveal } from "@/components/motion/reveal";
 import { cn } from "@/lib/utils";
 
 interface SectionTitleProps {
@@ -17,7 +17,7 @@ export function SectionTitle({
   className,
 }: SectionTitleProps) {
   return (
-    <FadeIn
+    <Reveal
       className={cn(
         "mb-12 md:mb-16",
         align === "center" ? "text-center mx-auto max-w-3xl" : "text-left max-w-2xl",
@@ -38,6 +38,6 @@ export function SectionTitle({
           {subtitle}
         </p>
       )}
-    </FadeIn>
+    </Reveal>
   );
 }

@@ -1,4 +1,5 @@
 import type { Config } from 'tailwindcss'
+import tailwindcssAnimate from 'tailwindcss-animate'
 
 const config: Config = {
   darkMode: ['class'],
@@ -12,7 +13,13 @@ const config: Config = {
     extend: {
       colors: {
         background: 'hsl(var(--background))',
+        surface: {
+          DEFAULT: 'hsl(var(--surface))',
+          elevated: 'hsl(var(--surface-elevated))',
+        },
         foreground: 'hsl(var(--foreground))',
+        'border-hover': 'hsl(var(--border-hover))',
+        'accent-secondary': 'hsl(var(--accent-secondary))',
         card: {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',
@@ -63,10 +70,18 @@ const config: Config = {
         },
       },
       fontFamily: {
-        sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
+        sans: ['var(--font-geist)', 'system-ui', 'sans-serif'],
         mono: ['var(--font-jetbrains-mono)', 'monospace'],
       },
+      maxWidth: {
+        content: 'var(--container-content)',
+        wide: 'var(--container-wide)',
+        measure: 'var(--content-measure)',
+      },
       borderRadius: {
+        card: 'var(--radius-card)',
+        surface: 'var(--radius-surface)',
+        'surface-lg': 'var(--radius-surface-lg)',
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
@@ -95,6 +110,6 @@ const config: Config = {
       },
     },
   },
-  plugins: [require('tailwindcss-animate')],
+  plugins: [tailwindcssAnimate],
 }
 export default config

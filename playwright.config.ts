@@ -1,5 +1,9 @@
 import { defineConfig, devices } from '@playwright/test';
 
+const port = process.env.E2E_PORT ?? '3000';
+const baseURL = `http://localhost:${port}`;
+const harnessesEnabled = process.env.E2E_HARNESSES === '1';
+
 export default defineConfig({
   testDir: './e2e',
   timeout: 30 * 1000,
@@ -12,7 +16,8 @@ export default defineConfig({
   workers: process.env.CI ? 1 : undefined,
   reporter: 'list',
   use: {
-    baseURL: 'http://localhost:3000',
+    baseURL,
+    screenshot: 'only-on-failure',
     trace: 'on-first-retry',
   },
   projects: [
@@ -26,9 +31,12 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: 'npm run start',
-    url: 'http://localhost:3000',
-    reuseExistingServer: !process.env.CI,
+    command: harnessesEnabled
+      ? `npm run dev -- --port ${port}`
+      : `npm run start -- --port ${port}`,
+    url: baseURL,
+    reuseExistingServer: false,
     timeout: 120 * 1000,
+    env: harnessesEnabled ? { E2E_HARNESSES: '1' } : undefined,
   },
 });

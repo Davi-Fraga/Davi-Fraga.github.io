@@ -4,69 +4,95 @@
 
 @layer base {
   :root {
-    --background: 0 0% 99%;
-    --foreground: 222 47% 11%;
-    --card: 0 0% 100%;
-    --card-foreground: 222 47% 11%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 11%;
-    --primary: 158 75% 38%;
+    --background: 220 33% 98%;
+    --surface: 0 0% 100%;
+    --surface-elevated: 225 25% 96%;
+    --foreground: 228 35% 10%;
+    --muted-foreground: 220 12% 42%;
+    --border: 224 20% 88%;
+    --border-hover: 258 72% 58%;
+    --accent: 258 72% 52%;
+    --accent-secondary: 211 90% 52%;
+    --card: var(--surface);
+    --card-foreground: var(--foreground);
+    --popover: var(--surface);
+    --popover-foreground: var(--foreground);
+    --primary: var(--accent);
     --primary-foreground: 0 0% 100%;
-    --secondary: 215 25% 95%;
-    --secondary-foreground: 222 47% 11%;
-    --muted: 215 25% 95%;
-    --muted-foreground: 215 16% 47%;
-    --accent: 158 75% 38%;
+    --secondary: var(--surface-elevated);
+    --secondary-foreground: var(--foreground);
+    --muted: var(--surface-elevated);
     --accent-foreground: 0 0% 100%;
-    --destructive: 0 84.2% 60.2%;
+    --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 98%;
-    --border: 214 32% 91%;
-    --input: 214 32% 91%;
-    --ring: 158 75% 38%;
-    --radius: 0.75rem;
-
-    --chart-1: 158 75% 38%;
-    --chart-2: 199 89% 48%;
+    --input: var(--border);
+    --ring: var(--accent);
+    --radius-card: 1rem;
+    --radius-surface: 1.25rem;
+    --radius-surface-lg: 1.5rem;
+    --radius: var(--radius-card);
+    --container-content: 75rem;
+    --container-wide: 87.5rem;
+    --content-measure: 75ch;
+    --duration-fast: 200ms;
+    --duration-base: 400ms;
+    --duration-reveal: 700ms;
+    --duration-visual: 900ms;
+    --ease-ui: cubic-bezier(0.16, 1, 0.3, 1);
+    --chart-1: var(--accent);
+    --chart-2: var(--accent-secondary);
     --chart-3: 217 91% 60%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
   }
 
   .dark {
-    --background: 224 45% 4%;
-    --foreground: 210 20% 96%;
-    --card: 224 40% 7%;
-    --card-foreground: 210 20% 96%;
-    --popover: 224 40% 7%;
-    --popover-foreground: 210 20% 96%;
-    --primary: 158 75% 44%;
-    --primary-foreground: 224 45% 4%;
-    --secondary: 224 35% 12%;
-    --secondary-foreground: 210 20% 96%;
-    --muted: 224 30% 12%;
-    --muted-foreground: 215 18% 62%;
-    --accent: 158 75% 44%;
-    --accent-foreground: 224 45% 4%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 224 30% 14%;
-    --input: 224 30% 14%;
-    --ring: 158 75% 44%;
-
-    --chart-1: 158 75% 44%;
-    --chart-2: 199 89% 48%;
-    --chart-3: 217 91% 60%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
+    --background: 228 35% 6%;
+    --surface: 226 30% 9%;
+    --surface-elevated: 225 27% 12%;
+    --foreground: 220 25% 96%;
+    --muted-foreground: 220 12% 66%;
+    --border: 225 20% 18%;
+    --border-hover: 258 82% 70%;
+    --accent: 258 82% 68%;
+    --accent-secondary: 211 92% 66%;
+    --primary-foreground: 228 35% 6%;
+    --accent-foreground: 228 35% 6%;
+    --destructive: 0 63% 42%;
+    --chart-1: var(--accent);
+    --chart-2: var(--accent-secondary);
+    --chart-3: 217 91% 65%;
+    --chart-4: 280 65% 65%;
+    --chart-5: 340 75% 60%;
   }
-}
 
-@layer base {
   * {
     @apply border-border;
   }
+
+  html {
+    scroll-behavior: auto;
+  }
+
   body {
     @apply bg-background text-foreground;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  :focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  .skip-link {
+    @apply fixed left-4 top-4 z-[100] -translate-y-24 rounded-md bg-primary px-4 py-3 font-semibold text-primary-foreground shadow-lg transition-transform;
+  }
+
+  .skip-link:focus-visible {
+    @apply translate-y-0;
   }
 }
 
@@ -91,7 +117,33 @@
   }
 }
 
-/* Custom scrollbar */
+@keyframes case-entry {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .motion-content {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
@@ -104,5 +156,5 @@
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: hsl(var(--muted-foreground)/0.5);
+  background: hsl(var(--muted-foreground) / 0.5);
 }

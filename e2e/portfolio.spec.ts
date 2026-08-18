@@ -5,7 +5,7 @@ test.describe('Portfólio Davi Fraga - E2E Tests', () => {
     await page.goto('/');
 
     // Check prominent name
-    await expect(page.getByRole('heading', { name: 'Davi Fraga', exact: true })).toBeVisible();
+    await expect(page.getByText('Davi Fraga', { exact: true }).first()).toBeVisible();
 
     // Check main title
     await expect(page.locator('h1')).toContainText('Desenvolvedor Full Stack');

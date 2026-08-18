@@ -1,15 +1,54 @@
 "use client";
 
+import { useRef } from "react";
 import Link from "next/link";
-import { Building2, Calendar, CheckCircle2, ArrowRight, Briefcase, GraduationCap } from "lucide-react";
+import { Calendar, CheckCircle2, ArrowRight, Briefcase, GraduationCap } from "lucide-react";
 import { SectionTitle } from "@/components/section-title";
-import { FadeIn, StaggerContainer, StaggerItem } from "@/components/motion-wrapper";
+import { Reveal } from "@/components/motion/reveal";
 import { experiences, educations } from "@/data/experience";
 import { Button } from "@/components/ui/button";
+import { useMotionCapabilities } from "@/hooks/use-motion-capabilities";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export function ExperienceSection() {
+  const timelineRef = useRef<HTMLDivElement>(null);
+  const lineProgressRef = useRef<SVGLineElement>(null);
+  const capabilities = useMotionCapabilities();
+  const isCapabilitiesReady = capabilities.isReady;
+  const isCapableDesktop = isCapabilitiesReady && capabilities.canUseStickyProjects;
+
+  useGSAP(
+    () => {
+      if (!isCapableDesktop || !timelineRef.current || !lineProgressRef.current) return;
+
+      gsap.registerPlugin(ScrollTrigger);
+
+      gsap.fromTo(
+        lineProgressRef.current,
+        { strokeDashoffset: 1000 },
+        {
+          strokeDashoffset: 0,
+          ease: "none",
+          scrollTrigger: {
+            trigger: timelineRef.current,
+            start: "top 80%",
+            end: "bottom 70%",
+            scrub: 0.5,
+          },
+        },
+      );
+    },
+    { scope: timelineRef, dependencies: [isCapableDesktop], revertOnUpdate: true },
+  );
+
   return (
-    <section id="experiencia" className="py-20 md:py-28" aria-label="Experiência Profissional e Formação">
+    <section
+      id="experiencia"
+      className="py-20 md:py-28"
+      aria-label="Experiência Profissional e Formação"
+    >
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <SectionTitle
           eyebrow="Trajetória Técnica"
@@ -17,18 +56,71 @@ export function ExperienceSection() {
           subtitle="Atuação corporativa no desenvolvimento de sistemas web, APIs RESTful e consolidação de dados em ambiente real."
         />
 
-        <div className="grid gap-12 lg:grid-cols-12">
+        <div
+          ref={timelineRef}
+          data-experience-timeline
+          data-timeline-state={
+            !isCapabilitiesReady
+              ? "idle"
+              : isCapableDesktop
+                ? "active"
+                : "reduced"
+          }
+          className="grid gap-12 lg:grid-cols-12 lg:gap-12 relative"
+        >
           {/* Main Column: Professional Experience (7 cols) */}
-          <div className="lg:col-span-7 space-y-6">
+          <div className="lg:col-span-7 space-y-6 relative">
             <div className="flex items-center gap-2 text-primary font-mono text-sm font-semibold uppercase tracking-wider">
               <Briefcase className="h-4 w-4" />
               <span>Experiência Corporativa</span>
             </div>
 
-            <div className="space-y-6">
-              {experiences.map((exp) => (
-                <FadeIn key={exp.id}>
-                  <div className="rounded-xl border border-primary/30 bg-card p-6 sm:p-8 space-y-5 shadow-sm">
+            <div className="relative pl-6 md:pl-8 space-y-6">
+              {/* Timeline SVG Line */}
+              <div
+                aria-hidden="true"
+                className="absolute left-2 top-3 bottom-3 w-[2px] -translate-x-1/2 overflow-hidden pointer-events-none"
+              >
+                <svg
+                  className="w-full h-full"
+                  viewBox="0 0 2 1000"
+                  preserveAspectRatio="none"
+                >
+                  {/* Background track line */}
+                  <line
+                    x1="1"
+                    y1="0"
+                    x2="1"
+                    y2="1000"
+                    stroke="currentColor"
+                    className="text-border/60"
+                    strokeWidth="2"
+                  />
+                  {/* Active progress line */}
+                  <line
+                    ref={lineProgressRef}
+                    x1="1"
+                    y1="0"
+                    x2="1"
+                    y2="1000"
+                    stroke="currentColor"
+                    className="text-primary"
+                    strokeWidth="2"
+                    strokeDasharray="1000"
+                    strokeDashoffset={isCapableDesktop ? "1000" : "0"}
+                  />
+                </svg>
+              </div>
+
+              {experiences.map((exp, index) => (
+                <Reveal key={exp.id} delay={index * 0.15}>
+                  <div className="relative rounded-xl border border-primary/30 bg-card p-6 sm:p-8 space-y-5 shadow-sm">
+                    {/* Node indicator dot on timeline */}
+                    <div
+                      aria-hidden="true"
+                      className="absolute -left-[calc(1.5rem+5px)] md:-left-[calc(2rem+5px)] top-8 h-3 w-3 rounded-full border-2 border-primary bg-background"
+                    />
+
                     {/* Header */}
                     <div className="flex flex-wrap items-start justify-between gap-3 border-b border-border/50 pb-4">
                       <div>
@@ -112,7 +204,7 @@ export function ExperienceSection() {
                       </div>
                     </div>
                   </div>
-                </FadeIn>
+                </Reveal>
               ))}
             </div>
           </div>
@@ -125,8 +217,8 @@ export function ExperienceSection() {
             </div>
 
             <div className="space-y-4">
-              {educations.map((edu) => (
-                <FadeIn key={edu.id}>
+              {educations.map((edu, index) => (
+                <Reveal key={edu.id} delay={index * 0.1}>
                   <div className="rounded-xl border border-border/80 bg-card p-5 sm:p-6 space-y-2.5 transition-colors hover:border-primary/40">
                     <div className="flex items-start justify-between gap-2">
                       <div>
@@ -154,7 +246,7 @@ export function ExperienceSection() {
                       </p>
                     )}
                   </div>
-                </FadeIn>
+                </Reveal>
               ))}
             </div>
           </div>
