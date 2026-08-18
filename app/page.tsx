@@ -8,12 +8,19 @@ import { SkillsGrid } from "@/components/skills-grid";
 import { AboutSection } from "@/components/about-section";
 import { ContactSection } from "@/components/contact-section";
 import { Footer } from "@/components/footer";
+import { SkipLink } from "@/components/navigation/skip-link";
 
-export default function HomePage() {
+export default async function HomePage() {
+  const MotionPrimitivesHarness =
+    process.env.NODE_ENV !== "production" && process.env.E2E_HARNESSES === "1"
+      ? (await import("@/components/motion/motion-primitives-harness"))
+          .MotionPrimitivesHarness
+      : null;
   return (
     <>
+      <SkipLink />
       <Navbar />
-      <main id="main-content">
+      <main id="main-content" tabIndex={-1}>
         <Hero />
         <MetricsSection />
         <ProjectsSection />
@@ -24,6 +31,7 @@ export default function HomePage() {
         <ContactSection />
       </main>
       <Footer />
+      {MotionPrimitivesHarness ? <MotionPrimitivesHarness /> : null}
     </>
   );
 }

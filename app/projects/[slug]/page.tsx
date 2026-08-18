@@ -20,6 +20,8 @@ import { projects, getProjectBySlug } from "@/data/projects";
 import { Button } from "@/components/ui/button";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
+import { SkipLink } from "@/components/navigation/skip-link";
+import { CaseReadingProgress } from "@/components/cases/case-reading-progress";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -72,8 +74,10 @@ export default async function ProjectCaseStudyPage({ params }: PageProps) {
 
   return (
     <>
+      <SkipLink />
+      <CaseReadingProgress targetId="case-content" />
       <Navbar />
-      <main className="min-h-screen pb-24">
+      <main id="main-content" tabIndex={-1} className="min-h-screen pb-24">
         {/* Top Breadcrumbs & Back Bar */}
         <div className="border-b border-border/50 bg-secondary/30 py-4">
           <div className="mx-auto flex max-w-5xl items-center justify-between px-4 sm:px-6">
@@ -198,7 +202,10 @@ export default async function ProjectCaseStudyPage({ params }: PageProps) {
         </section>
 
         {/* Case Study Detailed Content */}
-        <section className="mx-auto max-w-5xl px-4 sm:px-6 py-12 space-y-16">
+        <section
+          id="case-content"
+          className="motion-content mx-auto max-w-5xl space-y-16 px-4 py-12 opacity-0 translate-y-2 animate-[case-entry_400ms_ease-out_forwards] sm:px-6"
+        >
           {/* 1. Contexto & Problema */}
           <div className="grid gap-8 md:grid-cols-2">
             <div className="rounded-xl border border-border/80 bg-card p-6 md:p-8 space-y-3">

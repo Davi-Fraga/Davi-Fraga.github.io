@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useTheme } from "next-themes";
@@ -8,6 +8,8 @@ import { Moon, Sun, Menu, X, Github, Linkedin, FileText, Code2 } from "lucide-re
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { profile } from "@/data/profile";
+import { useReducedMotion } from "@/hooks/use-reduced-motion";
+import { motionConfig } from "@/lib/motion/config";
 
 const navLinks = [
   { label: "Projetos", href: "/#projetos" },
@@ -22,16 +24,24 @@ const navLinks = [
 export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
-  const [mounted, setMounted] = useState(false);
+  const [isCompact, setIsCompact] = useState(false);
+  const menuToggleRef = useRef<HTMLButtonElement>(null);
+  const { prefersReducedMotion } = useReducedMotion();
+  const mounted = useSyncExternalStore(
+    () => () => undefined,
+    () => true,
+    () => false,
+  );
   const { setTheme, resolvedTheme } = useTheme();
   const pathname = usePathname();
 
   useEffect(() => {
-    setMounted(true);
-
     const handleScroll = () => {
       const sections = ["projetos", "cases", "academicos", "experiencia", "stack", "sobre", "contato"];
       const scrollPosition = window.scrollY + 200;
+      let currentSection = "";
+
+      setIsCompact(window.scrollY > motionConfig.offsets.navbar);
 
       for (const section of sections) {
         const el = document.getElementById(section);
@@ -39,16 +49,35 @@ export function Navbar() {
           const top = el.offsetTop;
           const height = el.offsetHeight;
           if (scrollPosition >= top && scrollPosition < top + height) {
-            setActiveSection(section);
+            currentSection = section;
             break;
           }
         }
       }
+
+      setActiveSection(currentSection);
     };
 
+    handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    if (!mobileOpen) {
+      return;
+    }
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setMobileOpen(false);
+        menuToggleRef.current?.focus();
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [mobileOpen]);
 
   const toggleTheme = () => {
     setTheme(resolvedTheme === "dark" ? "light" : "dark");
@@ -59,8 +88,15 @@ export function Navbar() {
       e.preventDefault();
       window.scrollTo({
         top: 0,
-        behavior: "smooth",
+        behavior: prefersReducedMotion ? "auto" : "smooth",
       });
+      if (!prefersReducedMotion) {
+        window.setTimeout(() => {
+          if (window.scrollY !== 0) {
+            window.scrollTo({ top: 0, behavior: "auto" });
+          }
+        }, motionConfig.durations.visual * 1000);
+      }
       // Clear hash if any
       if (window.location.hash) {
         window.history.pushState(null, "", window.location.pathname);
@@ -70,18 +106,27 @@ export function Navbar() {
 
   return (
     <header
-      className="sticky top-0 z-50 w-full border-b border-border/60 bg-background/80 backdrop-blur-md supports-[backdrop-filter]:bg-background/60"
+      className={cn(
+        "sticky top-0 z-50 w-full transition-[background-color,border-color] duration-200",
+        isCompact
+          ? "border-b border-border/60 bg-background/80 backdrop-blur-md supports-[backdrop-filter]:bg-background/60"
+          : "border-b border-transparent bg-background/35",
+      )}
+      data-compact={isCompact}
       role="banner"
     >
       <nav
-        className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6"
+        className={cn(
+          "mx-auto flex max-w-6xl items-center justify-between px-4 transition-[height] duration-200 sm:px-6",
+          isCompact ? "h-14" : "h-16",
+        )}
         aria-label="Navegação principal"
       >
         {/* Logo / Brand with Scroll-to-Top handler */}
         <Link
           href="/"
           onClick={handleLogoClick}
-          className="group flex items-center gap-2 text-base font-semibold text-foreground transition-colors hover:text-primary cursor-pointer"
+          className="group flex min-h-11 items-center gap-2 text-base font-semibold text-foreground transition-colors hover:text-primary cursor-pointer"
           aria-label={`${profile.name} - Voltar ao topo`}
         >
           <div className="flex h-8 w-8 items-center justify-center rounded-lg border border-border bg-secondary/60 text-primary transition-colors group-hover:border-primary/50 group-hover:bg-primary/10">
@@ -132,7 +177,7 @@ export function Navbar() {
               asChild
               variant="ghost"
               size="icon"
-              className="h-9 w-9 text-muted-foreground hover:text-foreground"
+              className="h-11 w-11 text-muted-foreground hover:text-foreground sm:h-9 sm:w-9"
               aria-label="Perfil no GitHub"
             >
               <a
@@ -150,7 +195,7 @@ export function Navbar() {
               asChild
               variant="ghost"
               size="icon"
-              className="h-9 w-9 text-muted-foreground hover:text-foreground"
+              className="h-11 w-11 text-muted-foreground hover:text-foreground sm:h-9 sm:w-9"
               aria-label="Perfil no LinkedIn"
             >
               <a
@@ -170,7 +215,7 @@ export function Navbar() {
               size="icon"
               onClick={toggleTheme}
               aria-label="Alternar tema claro/escuro"
-              className="h-9 w-9 text-muted-foreground hover:text-foreground"
+              className="h-11 w-11 text-muted-foreground hover:text-foreground sm:h-9 sm:w-9"
             >
               <Sun className="h-4 w-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
               <Moon className="absolute h-4 w-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
@@ -197,12 +242,14 @@ export function Navbar() {
 
           {/* Mobile menu toggle */}
           <Button
+            ref={menuToggleRef}
             variant="ghost"
             size="icon"
-            className="lg:hidden h-9 w-9 text-muted-foreground hover:text-foreground"
-            onClick={() => setMobileOpen(!mobileOpen)}
+            className="lg:hidden h-11 w-11 text-muted-foreground hover:text-foreground"
+            onClick={() => setMobileOpen((open) => !open)}
             aria-label={mobileOpen ? "Fechar menu" : "Abrir menu"}
             aria-expanded={mobileOpen}
+            aria-controls="mobile-navigation"
           >
             {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </Button>
@@ -211,10 +258,9 @@ export function Navbar() {
 
       {/* Mobile menu dropdown */}
       <div
-        className={cn(
-          "overflow-hidden border-b border-border/50 bg-background/95 backdrop-blur-lg transition-all duration-200 ease-in-out lg:hidden",
-          mobileOpen ? "max-h-96 py-4" : "max-h-0 py-0"
-        )}
+        id="mobile-navigation"
+        hidden={!mobileOpen}
+        className="overflow-hidden border-b border-border/50 bg-background/95 py-4 backdrop-blur-lg lg:hidden"
       >
         <div className="mx-auto max-w-6xl px-4 space-y-3">
           <ul className="flex flex-col gap-1" role="list">

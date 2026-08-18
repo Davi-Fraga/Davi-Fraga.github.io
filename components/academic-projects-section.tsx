@@ -2,7 +2,7 @@
 
 import { Github, BookOpen, CheckCircle2 } from "lucide-react";
 import { SectionTitle } from "@/components/section-title";
-import { StaggerContainer, StaggerItem } from "@/components/motion-wrapper";
+import { Reveal } from "@/components/motion/reveal";
 import { getAcademicProjects } from "@/data/projects";
 import { Button } from "@/components/ui/button";
 
@@ -22,12 +22,12 @@ export function AcademicProjectsSection() {
           subtitle="Aplicações desktop desenvolvidas durante a formação em Engenharia de Software no SENAI FATESG para consolidação de padrões arquiteturais (MVC), Java e persistência com bancos de dados."
         />
 
-        <StaggerContainer className="grid gap-6 md:grid-cols-2">
-          {academicProjects.map((project) => {
+        <div className="grid gap-6 md:grid-cols-2">
+          {academicProjects.map((project, index) => {
             const hasRepo = Boolean(project.githubUrl && project.githubUrl.trim() !== "");
 
             return (
-              <StaggerItem key={project.id}>
+              <Reveal key={project.id} delay={index * 0.1}>
                 <div className="flex h-full flex-col justify-between rounded-xl border border-border/70 bg-card/60 p-5 sm:p-6 transition-all hover:border-primary/30 hover:bg-card">
                   <div className="space-y-3">
                     <div className="flex items-center justify-between border-b border-border/40 pb-2.5">
@@ -97,10 +97,10 @@ export function AcademicProjectsSection() {
                     </div>
                   )}
                 </div>
-              </StaggerItem>
+              </Reveal>
             );
           })}
-        </StaggerContainer>
+        </div>
       </div>
     </section>
   );
